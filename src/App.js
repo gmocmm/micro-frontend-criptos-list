@@ -1,11 +1,11 @@
 import React from 'react';
-import Pokemons from './components/Pokemons';
+import Criptos from './components/Criptos';
 
 const App = () => {
   return (
     <div>
       <h2>Child</h2>
-      <Pokemons />
+      <Criptos />
     </div>
   );
 };
