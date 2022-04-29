@@ -1,0 +1,25 @@
+.coin-name__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.coin-name__icon span {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  border-radius: 100%;
+  background-color: #d1d1d1;
+  display: block;
+}
+
+.coin-name__details strong {
+  width: 100%;
+  display: block;
+  font-size: 16px;
+  line-height: 1em;
+}
+
+.coin-name__details span {
+  font-size: 14px;
+}
