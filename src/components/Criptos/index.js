@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -8,42 +8,22 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
+import { getCriptos } from './../../services/criptos-service';
+
 import './styles.css';
 
-const cripto = [
-  {
-    id: 0,
-    name: 'Bitcoin',
-    shortname: 'BTC',
-    price: '815.120,00 MXN',
-    exchange: '2,00%',
-    capitalization: '15,5 BMXN',
-    volume: '684,6 mil MMXN',
-    supply: '19,0 M'
-  },
-  {
-    id: 1,
-    name: 'Bitcoin',
-    shortname: 'BTC',
-    price: '815.120,00 MXN',
-    exchange: '2,00%',
-    capitalization: '15,5 BMXN',
-    volume: '684,6 mil MMXN',
-    supply: '19,0 M'
-  },
-  {
-    id: 2,
-    name: 'Bitcoin',
-    shortname: 'BTC',
-    price: '815.120,00 MXN',
-    exchange: '2,00%',
-    capitalization: '15,5 BMXN',
-    volume: '684,6 mil MMXN',
-    supply: '19,0 M'
-  }
-];
-
 export default function Criptos () {
+  const [coins, setCoins] = useState(null);
+
+  const getCoins = async () => {
+    const auxCoins = await getCriptos();
+    setCoins(auxCoins);
+  };
+
+  useEffect(() => {
+    getCoins();
+  });
+
   return (
     <Fragment>
       <TableContainer component={Paper} sx={{ maxWidth: 1024 }}>
@@ -58,30 +38,27 @@ export default function Criptos () {
           </TableHead>
           <TableBody>
             {
-              cripto.map((data) => (
+              coins && coins.map((coin) => (
                 <TableRow
-                  key={ data.id}
+                  key={ coin.asset_id}
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
                     <div className='coin-name__wrapper'>
-                      <div className='coin-name__icon'>
-                        <span></span>
-                      </div>
                       <div className="coin-name__details">
-                        <strong>{ data.name }</strong>
-                        <span>{ data.shortname }</span>
+                        <strong>{ coin.name }</strong>
+                        <span>{ coin.asset_id }</span>
                       </div>
                     </div>
                   </TableCell>
                   <TableCell align="right">
-                    { data.price }
+                    { coin.price_usd }
                   </TableCell>
                   <TableCell align="right">
-                    { data.exchange }
+                    PENDIENT
                   </TableCell>
                   <TableCell align="right">
-                    { data.volume }
+                    { coin.volume_1day_usd }
                   </TableCell>
                 </TableRow>
               ))
