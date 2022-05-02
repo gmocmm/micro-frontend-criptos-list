@@ -22,7 +22,7 @@ export default function Criptos () {
 
   useEffect(() => {
     getCoins();
-  });
+  }, []);
 
   return (
     <Fragment>
@@ -45,6 +45,11 @@ export default function Criptos () {
                 >
                   <TableCell component="th" scope="row">
                     <div className='coin-name__wrapper'>
+                      <div className='coin-name__icon'>
+                        {
+                          coin.image ? <img src={coin.image}/> : <span></span>
+                        }
+                      </div>
                       <div className="coin-name__details">
                         <strong>{ coin.name }</strong>
                         <span>{ coin.asset_id }</span>

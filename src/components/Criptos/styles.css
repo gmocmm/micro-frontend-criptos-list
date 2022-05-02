@@ -4,6 +4,7 @@
   justify-content: flex-start;
 }
 
+.coin-name__icon img,
 .coin-name__icon span {
   width: 30px;
   height: 30px;
