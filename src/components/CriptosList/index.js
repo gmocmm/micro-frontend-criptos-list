@@ -8,7 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
-import { getCriptos } from './../../services/criptos-service';
+import { getCriptos } from '../../services/criptos-service';
 
 import './styles.css';
 
