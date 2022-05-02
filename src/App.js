@@ -1,12 +1,11 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Criptos from './components/Criptos';
 
 const App = () => {
   return (
-    <div>
-      <h2>Child</h2>
+    <Fragment>
       <Criptos />
-    </div>
+    </Fragment>
   );
 };
 
