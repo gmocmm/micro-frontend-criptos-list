@@ -7,17 +7,14 @@ const Criptos = () => {
 
   const obtenerCriptos = async () => {
     const auxCriptos = await getCriptos();
-    //console.log(auxCriptos);
     setCriptos(auxCriptos);
     
   };
-
+console.log('kjkjkjk');
   return (
     <div>
       <button onClick={obtenerCriptos}>Lista de criptos</button>
-      {criptos &&
-        criptos.map((cripto) => <Cripto props={cripto}/>)
-      }
+      {criptos && criptos.map((cripto) => <Cripto props={cripto}/>) }
     </div>
   );
 };
