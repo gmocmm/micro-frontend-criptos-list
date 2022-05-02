@@ -1,11 +1,24 @@
 import axios from 'axios';
 
-const url = 'https://rest.coinapi.io/v1/assets';
-const currencies = ['BTC', 'ETH', 'ETH2', 'USDT', 'BNB', 'USDC', 'SOL', 'XRP', 'LUNA', 'ADA'];
-const apiKey = '6F501535-6DCB-4046-B48A-221C99F384DD';
+const url = 'https://rest.coinapi.io/v1';
+const currencies = [
+  'BTC',
+  'ETH',
+  'ETH2',
+  'USDT',
+  'BNB',
+  'USDC',
+  'SOL',
+  'XRP',
+  'LUNA',
+  'ADA'
+];
+const apiKey = '60E1CC87-B20A-4A6B-AD76-962D4A9EAF43';
 
 const getCriptos = async () => {
-  const criptos = await axios.get(`${url}/${currencies.join(';')}?apikey=${apiKey}`).then((res) => res.data);
+  const criptos = await axios
+    .get(`${url}/assets/${currencies.join(';')}?apikey=${apiKey}`)
+    .then((res) => res.data);
   const icons = await getCriptoIcon();
 
   criptos.forEach((cripto, index) => {
@@ -17,11 +30,33 @@ const getCriptos = async () => {
 };
 
 const getCriptoIcon = async () => {
-  const data = await axios.get(`${url}/icons/100x100/?apikey=${apiKey}`).then((res) => res.data);
+  const data = await axios
+    .get(`${url}/assets/icons/100x100/?apikey=${apiKey}`)
+    .then((res) => res.data);
   return data;
 };
 
-export {
-  getCriptos,
-  getCriptoIcon
-};
+// const getExchangeRate = async (currencies) => {
+//   const today = new Date().toISOString().slice(0, 19);
+//   const date = moment().subtract(1, 'days');
+//   const yestarday = date.toISOString().slice(0, 19);
+
+//   const data = await Promise.all(
+//     currencies.map((currency) => {
+//       return fetch(
+//         `${url}/exchangerate/${currency}/USD/history?period_id=1DAY&time_start=${yestarday}&time_end=${today}&apikey=${apiKey}`,
+//         {
+//           method: 'GET',
+//           headers: {
+//             'Content-Type': 'application/json',
+//             'X-Requested-With': 'XMLHttpRequest'
+//           }
+//         }
+//       ).then((response) => response.json());
+//     })
+//   );
+
+//   return data;
+// };
+
+export { getCriptos, getCriptoIcon };
