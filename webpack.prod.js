@@ -33,10 +33,14 @@ module.exports = {
       name: 'CRIPTOS',
       filename: 'remoteEntry_list.js',
       exposes: {
-        './CriptosList': './src/components/CriptosList'
+        './CriptosDetails': './src/components/CriptosDetails'
+      },
+      remotes: {
+        MF2: 'MF2@https://microjosegaston.s3.us-west-1.amazonaws.com/MF2/remoteEntry.js'
       },
       shared: {
-        react: { singleton: true, requiredVersion: deps.react }
+        react: { singleton: true, requiredVersion: deps.react },
+        'react-router-dom': { singleton: true, requiredVersion: deps['react-router-dom'] }
       }
     })
   ],
