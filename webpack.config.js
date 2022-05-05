@@ -5,6 +5,9 @@ const deps = require('./package.json').dependencies;
 
 module.exports = {
   mode: 'development',
+  output: {
+    publicPath: 'auto'
+  },
   devServer: {
     port: 8081 // Port in each micro frontend in which will running
   },
@@ -30,24 +33,21 @@ module.exports = {
       template: './public/index.html'
     }),
     new ModuleFederationPlugin({
-      name: 'MF1',
-      filename: 'remoteEntry.js',
-      // Use only  remote property when you are created a container to receive a microfrontend-child
-      remotes: {
-        // MF1:
-        //   "MF1@http://domain/remoteEntry.js", //This is an example
-      },
-      // Use only when this component will be a child micro frontend
+      name: 'CRIPTOS',
+      filename: 'remoteEntry_list.js',
       exposes: {
-        './MicroFrontendApp': './src/App.js' // This is an example
+        './CriptosDetails': './src/components/CriptosDetails'
+      },
+      remotes: {
+        MF2: 'MF2@https://microjosegaston.s3.us-west-1.amazonaws.com/MF2/remoteEntry.js'
       },
       shared: {
-        ...deps,
-        react: {
-          singleton: true,
-          requiredVersion: deps.react
-        }
+        react: { singleton: true, requiredVersion: deps.react },
+        'react-router-dom': { singleton: true, requiredVersion: deps['react-router-dom'] }
       }
     })
-  ]
+  ],
+  optimization: {
+    splitChunks: false
+  }
 };

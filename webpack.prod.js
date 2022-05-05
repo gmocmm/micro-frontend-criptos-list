@@ -5,6 +5,9 @@ const deps = require('./package.json').dependencies;
 
 module.exports = {
   mode: 'production',
+  output: {
+    publicPath: 'auto'
+  },
   module: {
     rules: [
       {
@@ -28,17 +31,16 @@ module.exports = {
     }),
     new ModuleFederationPlugin({
       name: 'CRIPTOS',
-      filename: 'remoteEntry.js',
+      filename: 'remoteEntry_list.js',
       exposes: {
         './CriptosList': './src/components/CriptosList'
       },
       shared: {
-        ...deps,
-        react: {
-          singleton: true,
-          requiredVersion: deps.react
-        }
+        react: { singleton: true, requiredVersion: deps.react }
       }
     })
-  ]
+  ],
+  optimization: {
+    splitChunks: false
+  }
 };

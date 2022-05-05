@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { AbbreviateCurrency } from 'abbreviate-currency';
+import { Link } from 'react-router-dom';
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -15,7 +16,6 @@ import './styles.css';
 
 export default function Criptos () {
   const [coins, setCoins] = useState(null);
-
   const americanEnglishUsd = new AbbreviateCurrency({ language: 'en-US', currency: 'USD' });
 
   const getCoins = async () => {
@@ -47,17 +47,19 @@ export default function Criptos () {
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
-                    <div className='coin-name__wrapper'>
-                      <div className='coin-name__icon'>
-                        {
-                          coin.image ? <img src={coin.image}/> : <span></span>
-                        }
+                    <Link to={ `/${coin.asset_id}` }>
+                      <div className='coin-name__wrapper'>
+                        <div className='coin-name__icon'>
+                          {
+                            coin.image ? <img src={coin.image}/> : <span></span>
+                          }
+                        </div>
+                        <div className="coin-name__details">
+                          <strong>{ coin.name }</strong>
+                          <span>{ coin.asset_id }</span>
+                        </div>
                       </div>
-                      <div className="coin-name__details">
-                        <strong>{ coin.name }</strong>
-                        <span>{ coin.asset_id }</span>
-                      </div>
-                    </div>
+                    </Link>
                   </TableCell>
                   <TableCell align="right">
                    {americanEnglishUsd.transform(coin.price_usd)} USD

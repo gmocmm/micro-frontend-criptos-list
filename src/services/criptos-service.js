@@ -13,18 +13,19 @@ const currencies = [
   'LUNA',
   'ADA'
 ];
-const apiKey = '60E1CC87-B20A-4A6B-AD76-962D4A9EAF43';
+const apiKey = 'FEC69104-5CFB-4F1A-A2C3-04367ADF9B92';
 
 const getCriptos = async () => {
   const criptos = await axios
     .get(`${url}/assets/${currencies.join(';')}?apikey=${apiKey}`)
     .then((res) => res.data);
-  const icons = await getCriptoIcon();
 
-  criptos.forEach((cripto, index) => {
-    const icon = icons.filter((icon) => icon.asset_id === cripto.asset_id)[0];
-    criptos[index].image = icon ? icon.url : null;
-  });
+  // const icons = await getCriptoIcon();
+
+  // criptos.forEach((cripto, index) => {
+  //   const icon = icons.filter((icon) => icon.asset_id === cripto.asset_id)[0];
+  //   criptos[index].image = icon ? icon.url : null;
+  // });
 
   return criptos;
 };
