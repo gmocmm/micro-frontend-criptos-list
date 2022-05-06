@@ -12,7 +12,7 @@ const CriptosDetails = (props) => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={ <Home /> } />
-          <Route path="/:cripto" element={ <CriptoDetails /> } />
+          <Route path="/cripto/:cripto" element={ <CriptoDetails /> } />
         </Routes>
       </BrowserRouter>
     </Fragment>

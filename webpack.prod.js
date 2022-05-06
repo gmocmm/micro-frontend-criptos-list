@@ -31,16 +31,19 @@ module.exports = {
     }),
     new ModuleFederationPlugin({
       name: 'CRIPTOS',
-      filename: 'remoteEntry.js',
+      filename: 'remoteEntry_list.js',
       exposes: {
         './CriptosDetails': './src/components/CriptosDetails'
       },
       remotes: {
-        MF2: 'MF2@https://microjosegaston.s3.us-west-1.amazonaws.com/MF2/remoteEntry.js'
+        GRAFHCRIPTOS: 'GRAFHCRIPTOS@https://gmo-micro-frontends.s3.us-east-1.amazonaws.com/criptos-graph/remoteEntry_graph.js'
       },
       shared: {
-        react: { singleton: true, requiredVersion: deps.react },
-        'react-router-dom': { singleton: true, requiredVersion: deps['react-router-dom'] }
+        ...deps,
+        react: { singleton: true, requiredVersion: deps.react, eager: true }
+        // react: { singleton: true, requiredVersion: deps.react }
+        // 'react-router-dom': { singleton: true, requiredVersion: deps['react-router-dom'] },
+        // 'react-dom': { singleton: true, requiredVersion: deps['react-dom'] },
       }
     })
   ],

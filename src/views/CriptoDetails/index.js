@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 
 import ErrorFallback from '../../components/ErrorFallback';
 
-const MF2 = React.lazy(() => import('MF2/MF2'));
+const MicroFrontendApp = React.lazy(() => import('GRAFHCRIPTOS/MicroFrontendApp'));
 
 export default function CriptoDetails (props) {
   const { cripto } = useParams();
@@ -16,7 +16,7 @@ export default function CriptoDetails (props) {
           FallbackComponent={ErrorFallback}
           onReset={() => {}}
         >
-          <MF2 asset={ cripto } />
+          <MicroFrontendApp asset={ cripto } />
         </ErrorBoundary>
       </React.Suspense>
     </Fragment>

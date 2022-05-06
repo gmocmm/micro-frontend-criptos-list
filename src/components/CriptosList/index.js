@@ -10,7 +10,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
-import { getCriptos } from '../../services/criptos-service';
+// import { getCriptos } from '../../services/criptos-service';
 
 import './styles.css';
 
@@ -51,6 +51,8 @@ export default function Criptos () {
     getCoins();
   }, []);
 
+  console.log(coins);
+
   return (
     <Fragment>
       <TableContainer component={Paper} sx={{ maxWidth: 1024 }}>
@@ -71,7 +73,7 @@ export default function Criptos () {
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
-                    <Link to={ `/${coin.asset_id}` }>
+                    <Link to={ `/cripto/${coin.asset_id}` }>
                       <div className='coin-name__wrapper'>
                         <div className='coin-name__icon'>
                           {
