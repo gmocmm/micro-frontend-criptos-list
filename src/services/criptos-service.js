@@ -13,7 +13,8 @@ const currencies = [
   'LUNA',
   'ADA'
 ];
-const apiKey = 'FEC69104-5CFB-4F1A-A2C3-04367ADF9B92';
+
+const apiKey = 'EB806F07-EE0B-4BC6-8042-545061E08807';
 
 const getCriptos = async () => {
   const criptos = await axios

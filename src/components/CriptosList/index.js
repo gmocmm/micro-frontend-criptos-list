@@ -19,8 +19,32 @@ export default function Criptos () {
   const americanEnglishUsd = new AbbreviateCurrency({ language: 'en-US', currency: 'USD' });
 
   const getCoins = async () => {
-    const auxCoins = await getCriptos();
-    setCoins(auxCoins);
+    // const auxCoins = await getCriptos();
+    // setCoins(auxCoins);
+
+    setCoins([
+      {
+        asset_id: 'BTC',
+        name: 'Bitcoin',
+        image: null,
+        price_usd: '361000',
+        volume_1day_usd: '79200000'
+      },
+      {
+        asset_id: 'ETH',
+        name: 'Ethereum',
+        image: null,
+        price_usd: '260000',
+        volume_1day_usd: '41000000'
+      },
+      {
+        asset_id: 'SOL',
+        name: 'SOL',
+        image: null,
+        price_usd: '82',
+        volume_1day_usd: '161000000'
+      }
+    ]);
   };
 
   useEffect(() => {

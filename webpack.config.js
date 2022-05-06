@@ -9,6 +9,7 @@ module.exports = {
     publicPath: 'auto'
   },
   devServer: {
+    historyApiFallback: true,
     port: 8081 // Port in each micro frontend in which will running
   },
   module: {
@@ -34,7 +35,7 @@ module.exports = {
     }),
     new ModuleFederationPlugin({
       name: 'CRIPTOS',
-      filename: 'remoteEntry_list.js',
+      filename: 'remoteEntry.js',
       exposes: {
         './CriptosDetails': './src/components/CriptosDetails'
       },

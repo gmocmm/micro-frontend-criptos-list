@@ -31,7 +31,7 @@ module.exports = {
     }),
     new ModuleFederationPlugin({
       name: 'CRIPTOS',
-      filename: 'remoteEntry_list.js',
+      filename: 'remoteEntry.js',
       exposes: {
         './CriptosDetails': './src/components/CriptosDetails'
       },
