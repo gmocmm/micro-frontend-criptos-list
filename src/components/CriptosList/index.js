@@ -14,7 +14,7 @@ import Paper from '@mui/material/Paper';
 
 import './styles.css';
 
-export default function Criptos () {
+export default function Criptos ({ history }) {
   const [coins, setCoins] = useState(null);
   const americanEnglishUsd = new AbbreviateCurrency({ language: 'en-US', currency: 'USD' });
 
@@ -71,19 +71,17 @@ export default function Criptos () {
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
-                    {/* <Link to={ `/cripto/${coin.asset_id}` }> */}
-                      <div className='coin-name__wrapper'>
-                        <div className='coin-name__icon'>
-                          {
-                            coin.image ? <img src={coin.image}/> : <span></span>
-                          }
-                        </div>
-                        <div className="coin-name__details">
-                          <strong>{ coin.name }</strong>
-                          <span>{ coin.asset_id }</span>
-                        </div>
+                    <div className='coin-name__wrapper' onClick={ () => history.push(`/chart/${coin.asset_id}`) }>
+                      <div className='coin-name__icon'>
+                        {
+                          coin.image ? <img src={coin.image}/> : <span></span>
+                        }
                       </div>
-                    {/* </Link> */}
+                      <div className="coin-name__details">
+                        <strong>{ coin.name }</strong>
+                        <span>{ coin.asset_id }</span>
+                      </div>
+                    </div>
                   </TableCell>
                   <TableCell align="right">
                    {americanEnglishUsd.transform(coin.price_usd)} USD

@@ -2,6 +2,9 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  cursor: pointer;
+  color: blue;
+  text-decoration: underline;
 }
 
 .coin-name__icon img,
