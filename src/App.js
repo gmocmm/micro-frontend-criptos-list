@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react';
 
-import CriptosDetails from './components/CriptosDetails';
+import CriptosList from './components/CriptosList';
 
 const App = () => {
   return (
     <Fragment>
-      <CriptosDetails />
+      <CriptosList />
     </Fragment>
   );
 };

@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { AbbreviateCurrency } from 'abbreviate-currency';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -51,8 +51,6 @@ export default function Criptos () {
     getCoins();
   }, []);
 
-  console.log(coins);
-
   return (
     <Fragment>
       <TableContainer component={Paper} sx={{ maxWidth: 1024 }}>
@@ -73,7 +71,7 @@ export default function Criptos () {
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
-                    <Link to={ `/cripto/${coin.asset_id}` }>
+                    {/* <Link to={ `/cripto/${coin.asset_id}` }> */}
                       <div className='coin-name__wrapper'>
                         <div className='coin-name__icon'>
                           {
@@ -85,7 +83,7 @@ export default function Criptos () {
                           <span>{ coin.asset_id }</span>
                         </div>
                       </div>
-                    </Link>
+                    {/* </Link> */}
                   </TableCell>
                   <TableCell align="right">
                    {americanEnglishUsd.transform(coin.price_usd)} USD
