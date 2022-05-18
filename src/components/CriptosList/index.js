@@ -53,7 +53,7 @@ export default function Criptos ({ history }) {
 
   return (
     <Fragment>
-      <TableContainer component={Paper} sx={{ maxWidth: 1024 }}>
+      <TableContainer component={Paper} >
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
