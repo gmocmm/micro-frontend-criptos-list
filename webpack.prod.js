@@ -33,10 +33,7 @@ module.exports = {
       name: 'CRIPTOS',
       filename: 'remoteEntry_list.js',
       exposes: {
-        './CriptosDetails': './src/components/CriptosDetails'
-      },
-      remotes: {
-        GRAFHCRIPTOS: 'GRAFHCRIPTOS@https://gmo-micro-frontends.s3.us-east-1.amazonaws.com/criptos-graph/remoteEntry_graph.js'
+        './CriptosList': './src/components/CriptosList'
       },
       shared: {
         ...deps,
